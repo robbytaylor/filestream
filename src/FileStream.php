@@ -90,11 +90,11 @@ class FileStream
         $start = (int) $this->start;
 
         $headers = [
-            'Accept-Ranges' => 'bytes',
+            'Accept-Ranges'       => 'bytes',
             'Content-Disposition' => $this->disposition.'; filename="'.$this->getFilename().'"',
-            'Content-Range' => "bytes {$start}-{$this->getLastByte()}/$contentLength}",
-            'Content-Length' => $contentLength,
-            'Content-Type' => $this->getMimetype(),
+            'Content-Range'       => "bytes {$start}-{$this->getLastByte()}/$contentLength}",
+            'Content-Length'      => $contentLength,
+            'Content-Type'        => $this->getMimetype(),
         ];
 
         return $headers;
@@ -191,12 +191,10 @@ class FileStream
     {
         $stream = $this->filesystem->readStream($this->path);
 
-        return new StreamedResponse(function() use($stream) {
+        return new StreamedResponse(function () use ($stream) {
             $strategy = $this->start === null ? 'fullResponse' : 'partialResponse';
 
             $this->$strategy($stream);
         }, $this->status, $this->getHeaders());
     }
-
-    
 }
