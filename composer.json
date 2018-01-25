@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.0",
         "league/flysystem": "~1.0",
-        "symfony/http-foundation": "~3.*"
+        "symfony/http-foundation": "3.*"
     },
     "autoload": {
         "psr-4": {"RobbyTaylor\\FileStream\\": "src/"}
