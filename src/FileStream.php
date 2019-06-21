@@ -25,6 +25,11 @@ class FileStream
     /**
      * @var string
      */
+    protected $filename = '';
+
+    /**
+     * @var string
+     */
     protected $mimetype = '';
 
     /**
@@ -116,7 +121,7 @@ class FileStream
 
     public function getSize(): int
     {
-        return $this->size ?: $this->filesystem->size($this->path);
+        return $this->size ?: $this->filesystem->getSize($this->path);
     }
 
     public function mimetype($type): self
